@@ -5,7 +5,7 @@ const imap = {
   password: "chilelegal2020",
   host: "imap.outlook.com",
   port: 993, // imap port
-  tls: true, // use secure connection
+  tls: true,
   tlsOptions: { rejectUnauthorized: false },
 };
 
