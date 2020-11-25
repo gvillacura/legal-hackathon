@@ -36,7 +36,7 @@ const getKeywords = async () => {
 };
 
 const findKeywords = async (keyword) => {
-  let email;
+  let asignationData;
   await db
     .collection("keywords")
     .where("keyword", "==", keyword)
@@ -45,14 +45,17 @@ const findKeywords = async (keyword) => {
       querySnapshot.forEach(function (doc) {
         // doc.data() is never undefined for query doc snapshots
         //console.log(doc.id, " => ", doc.data());
-        email = doc.data().email;
+        asignationData = {
+          email: doc.data().email,
+          incharge: doc.data().incharge,
+        };
       });
     })
     .catch(function (error) {
       console.log("Error getting documents: ", error);
     });
 
-  return email;
+  return asignationData;
 };
 
 module.exports = { getKeywords, findKeywords };

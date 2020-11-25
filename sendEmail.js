@@ -1,17 +1,17 @@
 const nodeoutlook = require("nodejs-nodemailer-outlook");
 
-const send = (destination, reply) => {
+const send = (destination, reply, incharge) => {
   nodeoutlook.sendEmail({
     auth: {
-      user: "pruebalegal2020@outlook.com",
+      user: "bhp-hackathon@outlook.com",
       pass: "chilelegal2020",
     },
-    from: "pruebalegal2020@outlook.com",
+    from: "bhp-hackathon@outlook.com",
     to: destination + "," + reply,
     subject: "Respuesta de Chile Legal!",
-    html: `<h3> Su solicitud fue recibida y será procesada por el sector correspondiente</h3>
-    <p><b>Para tener una mayor información de nuestro equipo y áreas a las que prestan soporte, ingresa al siguiente link:</b></p>
-         <p><b><a href="https://www.accenture.com/cl-es">Chile legal-Santiago</a></b>
+    html: `<p> Hemos recibido tu mensaje. Tu solicitud ha sido asignada a <b> ${incharge} </b>. </p>
+    <p>Para tener una mayor información de nuestro equipo y áreas a las que prestan soporte, igresa al siguiente link:</p>
+         <p><b><a href="https://www.accenture.com/cl-es">Chile legal-Santiago</a></b></p>
          <br><br><br>
          
          <h1>ACCENTURE</h1>`,

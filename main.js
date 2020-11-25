@@ -4,7 +4,7 @@ const { send } = require("./sendEmail");
 const notifier = require("mail-notifier");
 const re = /\[(\w+)\]/i;
 const imap = {
-  user: "pruebalegal2020@outlook.com",
+  user: "bhp-hackathon@outlook.com",
   password: "chilelegal2020",
   host: "imap.outlook.com",
   port: 993, // imap port
@@ -23,8 +23,8 @@ notifier(imap)
     const emailPromise = findKeywords(keyword);
 
     //let result;
-    emailPromise.then((email) => {
-      send(email, reply);
+    emailPromise.then((asignationData) => {
+      send(asignationData.email, reply, asignationData.incharge);
     });
   })
   .start();
