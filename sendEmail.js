@@ -8,8 +8,13 @@ const send = (destination, reply) => {
     },
     from: "pruebalegal2020@outlook.com",
     to: destination + "," + reply,
-    subject: "Hey you, awesome!",
-    html: "<b>Tu solicitud está siendo asignada</b>",
+    subject: "Respuesta de Chile Legal!",
+    html: `<h3> Su solicitud fue recibida y será procesada por el sector correspondiente</h3>
+    <p><b>Para tener una mayor información de nuestro equipo y áreas a las que prestan soporte, ingresa al siguiente link:</b></p>
+         <p><b><a href="https://www.accenture.com/cl-es">Chile legal-Santiago</a></b>
+         <br><br><br>
+         
+         <h1>ACCENTURE</h1>`,
     text: "This is text version!",
     replyTo: "",
     attachments: [],
