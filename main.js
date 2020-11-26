@@ -5,7 +5,7 @@ const { keyword } = require("./keyword");
 const notifier = require("mail-notifier");
 
 const imap = {
-  user: "pruebalegal4@outlook.com",
+  user: "chilelegal-hackathon@outlook.com",
   password: "chilelegal2020",
   host: "imap.outlook.com",
   port: 993, // imap port
@@ -40,15 +40,15 @@ notifier(imap)
         }, 5000);
       } else {
         send(reply, asignationData.incharge);
-        setTimeout(() => {
-          sendEmailIncharge(
-            asignationData.email,
-            mail.subject,
-            mail.attachments,
-            mail.html,
-            reply
-          );
-        }, 5000);
+        // setTimeout(() => {
+        //   sendEmailIncharge(
+        //     asignationData.email,
+        //     mail.subject,
+        //     mail.attachments,
+        //     mail.html,
+        //     reply
+        //   );
+        // }, 5000);
       }
 
       //saveData(data);

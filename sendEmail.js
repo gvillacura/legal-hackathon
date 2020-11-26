@@ -1,12 +1,7 @@
-const nodeoutlook = require("nodejs-nodemailer-outlook");
+const sgMail = require("@sendgrid/mail");
 
 const send = (reply, incharge) => {
-  nodeoutlook.sendEmail({
-    auth: {
-      user: "pruebalegal4@outlook.com",
-      pass: "chilelegal2020",
-    },
-    from: "pruebalegal4@outlook.com",
+  const msg = {
     to: reply,
     subject: "Respuesta de Chile Legal!",
     html: `<p> Hemos recibido tu mensaje. Tu solicitud ha sido asignada a <b> ${incharge} </b>. </p>
@@ -15,22 +10,18 @@ const send = (reply, incharge) => {
          <br><br><br>
          
          <h1>ACCENTURE</h1>`,
-    text: "This is text version!",
-    replyTo: "",
-    attachments: [],
-    onError: (e) => console.log(e),
-    onSuccess: (i) => console.log(i),
-  });
+    text: "",
+    attachments: null,
+  };
+
+  console.log(msg);
+  sendEmail(msg);
 };
 
 const noChargeEmail = (reply) => {
   console.log("noChargeEmail");
-  nodeoutlook.sendEmail({
-    auth: {
-      user: "pruebalegal4@outlook.com",
-      pass: "chilelegal2020",
-    },
-    from: "pruebalegal4@outlook.com",
+
+  const msg = {
     to: reply,
     subject: "Respuesta de Chile Legal!",
     html: `<p>Hemos recibido tu solicitud y estamos asignando tu requerimiento. </p>
@@ -39,12 +30,11 @@ const noChargeEmail = (reply) => {
          <br><br><br>
          
          <h1>ACCENTURE</h1>`,
-    text: "This is text version!",
-    replyTo: "",
-    attachments: [],
-    onError: (e) => console.log(e),
-    onSuccess: (i) => console.log(i),
-  });
+    text: "",
+    attachments: null,
+  };
+
+  sendEmail(msg);
 };
 
 const sendEmailIncharge = (
@@ -56,20 +46,50 @@ const sendEmailIncharge = (
   destination2
 ) => {
   console.log(destination2);
-  nodeoutlook.sendEmail({
-    auth: {
-      user: "pruebalegal4@outlook.com",
-      pass: "chilelegal2020",
-    },
-    from: "pruebalegal4@outlook.com",
-    to: destination2 + ", " + destination,
+
+  const msg = {
+    to: destination,
     subject: subject,
     html: html,
     attachments: attachments,
-    replyTo: reply,
-    onError: (e) => console.log(e),
-    onSuccess: (i) => console.log(i),
-  });
+  };
+
+  sendEmail(msg);
+};
+
+const sendEmail = (msg) => {
+  let attachmentsMod = [];
+  if (msg.attachments !== undefined && msg.attachments !== null) {
+    attachmentsMod = attachments.map((attachment) => {
+      const content = attachment.content.toString("base64");
+      return {
+        content: content,
+        filename: attachment.fileName,
+        type: attachment.contentType,
+      };
+    });
+  }
+
+  sgMail.setApiKey(
+    "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"
+  );
+  const msgToSend = {
+    to: msg.to,
+    from: "chilelegal-hackathon@outlook.com",
+    subject: msg.to,
+    text: msg.text,
+    html: msg.html,
+    attachments: attachmentsMod,
+  };
+  console.log(msgToSend);
+  sgMail
+    .send(msgToSend)
+    .then(() => {
+      console.log("Email sent to", msgToSend.to);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 };
 
 module.exports = { send, sendEmailIncharge, noChargeEmail };
