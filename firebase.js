@@ -68,6 +68,31 @@ const findKeywords = (keyword) => {
   // }
 };
 
-const saveData = () => {};
+const saveData = (data) => {
+  db.collection("users")
+    .add({
+      assignedAgent: data.assignedAgent,
+      team: data.team,
+      customerId: data.customerId,
+      date: data.date,
+      status: "pending",
+    })
+    .then(function (docRef) {
+      console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function (error) {
+      console.error("Error adding document: ", error);
+    });
+
+  // let docRef = db.collection('orders').doc('email');
+
+  // let newData = docRef.set({
+  //   assignedAgent: data.assignedAgent,
+  //   team: data.team,
+  //   customerId: data.customerId,
+  //   date: data.date,
+  //   status: "pending",
+  // });
+};
 
 module.exports = { saveData, findKeywords };
