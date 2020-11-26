@@ -21,8 +21,7 @@ app.get("/sendmail", async (req, res) => {
     to: "chilelegal-hackathon@outlook.com", // list of receivers
     subject: "Respuesta de chile legal ✔", // Subject line
     text: "helo", // plain text body
-    html: `<b>Para tener una mayor información de nuestro equipo y áreas a las que prestan soporte, ingresa al siguiente link
-    <a href="https://www.accenture.com/cl-es">Chile legal-Santiago</a></b>`, // html body
+    html: `<b>HOLAAAA</b>`, // html body
   });
 
   res.send("e-mail enviando");

@@ -35,13 +35,13 @@ const getKeywords = async () => {
   return result;
 };
 
-const findKeywords = async (keyword) => {
-  let asignationData;
-  await db
+const findKeywords = (keyword) => {
+  return db
     .collection("keywords")
     .where("keyword", "==", keyword)
     .get()
     .then(function (querySnapshot) {
+      let asignationData;
       querySnapshot.forEach(function (doc) {
         // doc.data() is never undefined for query doc snapshots
         //console.log(doc.id, " => ", doc.data());
@@ -50,12 +50,11 @@ const findKeywords = async (keyword) => {
           incharge: doc.data().incharge,
         };
       });
+      return asignationData;
     })
     .catch(function (error) {
       console.log("Error getting documents: ", error);
     });
-
-  return asignationData;
 };
 
 module.exports = { getKeywords, findKeywords };
