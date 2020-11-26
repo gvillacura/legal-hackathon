@@ -2,12 +2,15 @@ const re = /\[(\w+)\]/i;
 
 const keyword = (subject) => {
   const keywordMatch = subject.match(re);
-
+  console.log(keywordMatch);
+  let keyword;
   if (keywordMatch === null) {
-    return "";
+    keyword = "NONE";
+    return keyword;
+  } else {
+    keyword = keywordMatch[1].toUpperCase();
+    return keyword;
   }
-  const keyword = keywordMatch[1];
-  return keyword;
 };
 
 module.exports = { keyword };

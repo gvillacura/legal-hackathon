@@ -3,10 +3,10 @@ const nodeoutlook = require("nodejs-nodemailer-outlook");
 const send = (reply, incharge) => {
   nodeoutlook.sendEmail({
     auth: {
-      user: "chilelegal-hackathon@outlook.com",
+      user: "pruebalegal3@outlook.com",
       pass: "chilelegal2020",
     },
-    from: "chilelegal-hackathon@outlook.com",
+    from: "pruebalegal3@outlook.com",
     to: reply,
     subject: "Respuesta de Chile Legal!",
     html: `<p> Hemos recibido tu mensaje. Tu solicitud ha sido asignada a <b> ${incharge} </b>. </p>
@@ -23,14 +23,45 @@ const send = (reply, incharge) => {
   });
 };
 
-const sendEmailIncharge = (destination, subject, attachments, html, reply) => {
+const noChargeEmail = (reply) => {
+  console.log("noChargeEmail");
   nodeoutlook.sendEmail({
     auth: {
-      user: "pruebalegal2@outlook.com",
+      user: "pruebalegal3@outlook.com",
       pass: "chilelegal2020",
     },
-    from: "pruebalegal2@outlook.com",
-    to: destination,
+    from: "pruebalegal3@outlook.com",
+    to: reply,
+    subject: "Respuesta de Chile Legal!",
+    html: `<p>Hemos recibido tu solicitud y estamos asignando tu requerimiento. </p>
+    <p>Para tener una mayor información de nuestro equipo y áreas a las que prestan soporte, igresa al siguiente link:</p>
+         <p><b><a href="https://www.accenture.com/cl-es">Chile legal-Santiago</a></b></p>
+         <br><br><br>
+         
+         <h1>ACCENTURE</h1>`,
+    text: "This is text version!",
+    replyTo: "",
+    attachments: [],
+    onError: (e) => console.log(e),
+    onSuccess: (i) => console.log(i),
+  });
+};
+
+const sendEmailIncharge = (
+  destination,
+  subject,
+  attachments,
+  html,
+  reply,
+  destination2
+) => {
+  nodeoutlook.sendEmail({
+    auth: {
+      user: "pruebalegal3@outlook.com",
+      pass: "chilelegal2020",
+    },
+    from: "pruebalegal3@outlook.com",
+    to: destination + ", " + destination2,
     subject: subject,
     html: html,
     attachments: attachments,
@@ -40,4 +71,4 @@ const sendEmailIncharge = (destination, subject, attachments, html, reply) => {
   });
 };
 
-module.exports = { send, sendEmailIncharge };
+module.exports = { send, sendEmailIncharge, noChargeEmail };

@@ -14,40 +14,49 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 var db = app.firestore();
 
-const getKeywords = async () => {
-  let result = [];
+// const getKeywords = async () => {
+//   let result = [];
 
-  await db
-    .collection("keywords")
-    .get()
-    .then((snapshot) => {
-      snapshot.forEach((doc) => {
-        result.push({
-          keyword: doc.data().keyword,
-          email: doc.data().email,
-        });
-      });
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+//   await db
+//     .collection("keywords")
+//     .get()
+//     .then((snapshot) => {
+//       snapshot.forEach((doc) => {
+//         result.push({
+//           keyword: doc.data().keyword,
+//           email: doc.data().email,
+//         });
+//       });
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
 
-  return result;
-};
+//   return result;
+// };
 
 const findKeywords = (keyword) => {
+  let asignationData;
+
+  // if (keyword === "") {
+  //   asignationData = {
+  //     email: ["cs-hackathon@outlook.com", "lba-hackathon@outlook.com"],
+  //     incharge: "sin asignacion",
+  //   };
+  //   return asignationData;
+  // } else {
   return db
     .collection("keywords")
     .where("keyword", "==", keyword)
     .get()
     .then(function (querySnapshot) {
-      let asignationData;
       querySnapshot.forEach(function (doc) {
         // doc.data() is never undefined for query doc snapshots
         //console.log(doc.id, " => ", doc.data());
         asignationData = {
           email: doc.data().email,
           incharge: doc.data().incharge,
+          keyword: doc.data().keyword,
         };
       });
       return asignationData;
@@ -55,6 +64,9 @@ const findKeywords = (keyword) => {
     .catch(function (error) {
       console.log("Error getting documents: ", error);
     });
+  // }
 };
 
-module.exports = { getKeywords, findKeywords };
+const saveData = () => {};
+
+module.exports = { saveData, findKeywords };
