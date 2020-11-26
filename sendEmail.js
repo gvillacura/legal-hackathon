@@ -3,10 +3,10 @@ const nodeoutlook = require("nodejs-nodemailer-outlook");
 const send = (reply, incharge) => {
   nodeoutlook.sendEmail({
     auth: {
-      user: "pruebalegal3@outlook.com",
+      user: "pruebalegal4@outlook.com",
       pass: "chilelegal2020",
     },
-    from: "pruebalegal3@outlook.com",
+    from: "pruebalegal4@outlook.com",
     to: reply,
     subject: "Respuesta de Chile Legal!",
     html: `<p> Hemos recibido tu mensaje. Tu solicitud ha sido asignada a <b> ${incharge} </b>. </p>
@@ -27,10 +27,10 @@ const noChargeEmail = (reply) => {
   console.log("noChargeEmail");
   nodeoutlook.sendEmail({
     auth: {
-      user: "pruebalegal3@outlook.com",
+      user: "pruebalegal4@outlook.com",
       pass: "chilelegal2020",
     },
-    from: "pruebalegal3@outlook.com",
+    from: "pruebalegal4@outlook.com",
     to: reply,
     subject: "Respuesta de Chile Legal!",
     html: `<p>Hemos recibido tu solicitud y estamos asignando tu requerimiento. </p>
@@ -55,13 +55,14 @@ const sendEmailIncharge = (
   reply,
   destination2
 ) => {
+  console.log(destination2);
   nodeoutlook.sendEmail({
     auth: {
-      user: "pruebalegal3@outlook.com",
+      user: "pruebalegal4@outlook.com",
       pass: "chilelegal2020",
     },
-    from: "pruebalegal3@outlook.com",
-    to: destination + ", " + destination2,
+    from: "pruebalegal4@outlook.com",
+    to: destination2 + ", " + destination,
     subject: subject,
     html: html,
     attachments: attachments,

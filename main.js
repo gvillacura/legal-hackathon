@@ -5,7 +5,7 @@ const { keyword } = require("./keyword");
 const notifier = require("mail-notifier");
 
 const imap = {
-  user: "pruebalegal3@outlook.com",
+  user: "pruebalegal4@outlook.com",
   password: "chilelegal2020",
   host: "imap.outlook.com",
   port: 993, // imap port
@@ -27,7 +27,7 @@ notifier(imap)
       //TO DO: validar assignationdata !== undefined, enviar correo a felipe y otra persona
       console.log(asignationData);
       if (asignationData.keyword === "NONE") {
-        noChargeEmail(reply);
+        //noChargeEmail(reply);
         setTimeout(() => {
           sendEmailIncharge(
             asignationData.email,

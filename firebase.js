@@ -55,6 +55,7 @@ const findKeywords = (keyword) => {
         //console.log(doc.id, " => ", doc.data());
         asignationData = {
           email: doc.data().email,
+          email2: doc.data().email2,
           incharge: doc.data().incharge,
           keyword: doc.data().keyword,
         };
