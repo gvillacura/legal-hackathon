@@ -27,23 +27,23 @@ notifier(imap)
     //let result;
     emailPromise.then((asignationData) => {
       //TO DO: validar assignationdata !== undefined, enviar correo a felipe y otra persona
-      // send(asignationData.email, reply, asignationData.incharge);
-      // sendEmailIncharge(
-      //   asignationData.email,
-      //   mail.subject,
-      //   mail.attachments,
-      //   mail.html,
-      //   reply
-      // );
+      send(reply, asignationData.incharge);
+      sendEmailIncharge(
+        asignationData.email,
+        mail.subject,
+        mail.attachments,
+        mail.html,
+        reply
+      );
       //TO DO: definar team cuando no hay palabra clave
       //TO DO: guardar data en colección de firebase.
-      const data = {
-        assignedAgent: asignationData.incharge,
-        team: "?",
-        customerId: mail.from[0].name,
-        date: mail.date,
-        status: "pending",
-      };
+      // const data = {
+      //   assignedAgent: asignationData.incharge,
+      //   team: "?",
+      //   customerId: mail.from[0].name,
+      //   date: mail.date,
+      //   status: "pending",
+      // };
     });
   })
   .start();

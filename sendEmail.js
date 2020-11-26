@@ -1,6 +1,6 @@
 const nodeoutlook = require("nodejs-nodemailer-outlook");
 
-const send = (destination, reply, incharge) => {
+const send = (reply, incharge) => {
   nodeoutlook.sendEmail({
     auth: {
       user: "chilelegal-hackathon@outlook.com",
