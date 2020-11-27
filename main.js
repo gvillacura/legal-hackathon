@@ -10,7 +10,7 @@ const { keyword } = require("./keyword");
 const notifier = require("mail-notifier");
 
 const imap = {
-  user: "legal202020@outlook.com",
+  user: "chilelegal-2020@outlook.com",
   password: "chilelegal2020",
   host: "imap.outlook.com",
   port: 993, // imap port
@@ -23,14 +23,8 @@ notifier(imap)
     const keywordFound = keyword(mail.subject);
     const reply = mail.from[0].address;
     const emailPromise = findKeywords(keywordFound);
-    // console.log("*****");
-    // console.log(mail);
-    // console.log("*****");
 
-    //let result;
     emailPromise.then((asignationData) => {
-      //TO DO: validar assignationdata !== undefined, enviar correo a felipe y otra persona
-      console.log(asignationData);
       if (asignationData.keyword === "NONE") {
         noChargeEmail(reply);
         setTimeout(() => {
