@@ -14,45 +14,15 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 var db = app.firestore();
 
-// const getKeywords = async () => {
-//   let result = [];
-
-//   await db
-//     .collection("keywords")
-//     .get()
-//     .then((snapshot) => {
-//       snapshot.forEach((doc) => {
-//         result.push({
-//           keyword: doc.data().keyword,
-//           email: doc.data().email,
-//         });
-//       });
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-
-//   return result;
-// };
-
 const findKeywords = (keyword) => {
   let asignationData;
 
-  // if (keyword === "") {
-  //   asignationData = {
-  //     email: ["cs-hackathon@outlook.com", "lba-hackathon@outlook.com"],
-  //     incharge: "sin asignacion",
-  //   };
-  //   return asignationData;
-  // } else {
   return db
     .collection("keywords")
     .where("keyword", "==", keyword)
     .get()
     .then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {
-        // doc.data() is never undefined for query doc snapshots
-        //console.log(doc.id, " => ", doc.data());
         asignationData = {
           email: doc.data().email,
           email2: doc.data().email2,
@@ -65,7 +35,6 @@ const findKeywords = (keyword) => {
     .catch(function (error) {
       console.log("Error getting documents: ", error);
     });
-  // }
 };
 
 const saveData = (data) => {
@@ -83,16 +52,6 @@ const saveData = (data) => {
     .catch(function (error) {
       console.error("Error adding document: ", error);
     });
-
-  // let docRef = db.collection('orders').doc('email');
-
-  // let newData = docRef.set({
-  //   assignedAgent: data.assignedAgent,
-  //   team: data.team,
-  //   customerId: data.customerId,
-  //   date: data.date,
-  //   status: "pending",
-  // });
 };
 
 module.exports = { saveData, findKeywords };

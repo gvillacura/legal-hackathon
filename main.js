@@ -23,13 +23,7 @@ notifier(imap)
     const keywordFound = keyword(mail.subject);
     const reply = mail.from[0].address;
     const emailPromise = findKeywords(keywordFound);
-    // console.log("*****");
-    // console.log(mail);
-    // console.log("*****");
-
-    //let result;
     emailPromise.then((asignationData) => {
-      //TO DO: validar assignationdata !== undefined, enviar correo a felipe y otra persona
       console.log(asignationData);
       if (asignationData.keyword === "NONE") {
         noChargeEmail(reply);
@@ -71,8 +65,6 @@ notifier(imap)
           saveData(data);
         }, 5000);
       }
-      //TO DO: definar team cuando no hay palabra clave
-      //TO DO: guardar data en colección de firebase.
     });
   })
   .start();

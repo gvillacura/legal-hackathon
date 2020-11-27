@@ -2,7 +2,6 @@ const re = /\[(\w+)\]/i;
 
 const keyword = (subject) => {
   const keywordMatch = subject.match(re);
-  console.log(keywordMatch);
   let keyword;
   if (keywordMatch === null) {
     keyword = "NONE";
