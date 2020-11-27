@@ -10,7 +10,7 @@ const { keyword } = require("./keyword");
 const notifier = require("mail-notifier");
 
 const imap = {
-  user: "legal202020@outlook.com",
+  user: "pruebalegal2@outlook.com",
   password: "chilelegal2020",
   host: "imap.outlook.com",
   port: 993, // imap port

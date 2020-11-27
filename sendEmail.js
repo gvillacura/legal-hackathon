@@ -3,10 +3,10 @@ const nodeoutlook = require("nodejs-nodemailer-outlook");
 const send = (reply, incharge) => {
   nodeoutlook.sendEmail({
     auth: {
-      user: "legal202020@outlook.com",
+      user: "pruebalegal2@outlook.com",
       pass: "chilelegal2020",
     },
-    from: "legal202020@outlook.com",
+    from: "pruebalegal2@outlook.com",
     to: reply,
     subject: "Respuesta de Chile Legal!",
     html: `<p> Hemos recibido tu mensaje. Tu solicitud ha sido asignada a <b> ${incharge} </b>. </p>
@@ -14,7 +14,7 @@ const send = (reply, incharge) => {
          <p><b><a href="https://www.accenture.com/cl-es">Chile legal-Santiago</a></b></p>
          <br><br><br>
          
-         <img href="./img/logo-accenture.jpeg" alt="" />`,
+         <img src="https://i.postimg.cc/65Dt8zJ0/logo-acc.png" alt="Logo" title="Logo" style="display:block" width="200" height="53" />`,
 
     text: "This is text version!",
     replyTo: "",
@@ -28,10 +28,10 @@ const noChargeEmail = (reply) => {
   console.log("noChargeEmail");
   nodeoutlook.sendEmail({
     auth: {
-      user: "legal202020@outlook.com",
+      user: "pruebalegal2@outlook.com",
       pass: "chilelegal2020",
     },
-    from: "legal202020@outlook.com",
+    from: "pruebalegal2@outlook.com",
     to: reply,
     subject: "Respuesta de Chile Legal!",
     html: `<p>Hemos recibido tu solicitud y estamos asignando tu requerimiento. </p>
@@ -39,7 +39,7 @@ const noChargeEmail = (reply) => {
          <p><b><a href="https://www.accenture.com/cl-es">Chile legal-Santiago</a></b></p>
          <br><br><br>
          
-         <img href="./img/logo-accenture.jpeg" alt="" />`,
+         <img src="https://i.postimg.cc/65Dt8zJ0/logo-acc.png" alt="Logo" title="Logo" style="display:block" width="200" height="53" />`,
     text: "This is text version!",
     replyTo: "",
     attachments: [],
@@ -51,13 +51,13 @@ const noChargeEmail = (reply) => {
 const sendEmailIncharge = (destination, subject, attachments, html, reply) => {
   nodeoutlook.sendEmail({
     auth: {
-      user: "legal202020@outlook.com",
+      user: "pruebalegal2@outlook.com",
       pass: "chilelegal2020",
     },
-    from: "legal202020@outlook.com",
+    from: "pruebalegal2@outlook.com",
     to: destination,
     subject: subject,
-    html: `<p>Solicitud enviada por: ${reply} </p><br>` + html,
+    html: `<p>Solicitud enviada por: <b> ${reply} </b> </p><br>` + html,
     attachments: attachments,
     onError: (e) => console.log(e),
     onSuccess: (i) => console.log(i),
@@ -75,10 +75,10 @@ const sendEmailTwoIncharge = (
   console.log(destination2);
   nodeoutlook.sendEmail({
     auth: {
-      user: "legal202020@outlook.com",
+      user: "pruebalegal2@outlook.com",
       pass: "chilelegal2020",
     },
-    from: "legal202020@outlook.com",
+    from: "pruebalegal2@outlook.com",
     to: destination2 + ", " + destination,
     subject: subject,
     html: `<p>Solicitud enviada por: ${reply} </p><br>` + html,
